@@ -1,7 +1,7 @@
 # Ankush Mondal
 
 ## Introduction
-Hello! I am Ankush Mondal, I have a strong foundation in C, C++, Rust, and Zig programming. I enjoy low-level programming, building small stuffs or projects, and solving coding problems and also love
+Hello! I am Ankush Mondal, I have a strong foundation in C, C++ and Javascript beside this I have a good knowledge of Rust, and Zig programming language. I enjoy low-level programming, building small stuffs or projects, and solving coding problems and also love
 going through the implementation of file systems, compilers, etc.
 
 ## Skills and Proficiency
@@ -16,6 +16,7 @@ going through the implementation of file systems, compilers, etc.
 ## Projects
 ### 1. Hawk
 A scalable binary reinstaller and efficient log maintainer for Linux. Developed tools for monitoring system changes, using `inotify` in C to track log modifications.
+*Link* : [hawk](https://github.com/ankushT369/hawk)
 
 ### 2. WebFlow
 A server solution aimed at solving the C10K problem by scaling from 1000 clients to more efficient handling capacities.
