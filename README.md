@@ -15,7 +15,7 @@ going through the implementation of file systems, compilers, etc.
 
 ## Projects
 ### 1. Hawk
-A scalable binary reinstaller and efficient log maintainer for Linux. Developed tools for monitoring system changes, using `inotify` in C to track log modifications.
+A scalable binary reinstaller and efficient log maintainer for Linux. Developed tools for monitoring installation logs, using `inotify` in C to track log modifications.
 *Link* : [hawk](https://github.com/ankushT369/hawk)
 
 ### 2. WebFlow
