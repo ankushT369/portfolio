@@ -1,12 +1,12 @@
 # Ankush Mondal
 
 ## Introduction
-Hello! I am Ankush Mondal, I have a strong foundation in C, C++ and Javascript beside this I have a good knowledge of Rust, and Zig programming language. I enjoy low-level programming, building small stuffs or projects, and solving coding problems and also love
+Hello! I am Ankush Mondal, I have a strong foundation in C, C++ and Javascript beside this I have a good knowledge of Rust, and Zig programming language. I enjoy system programming and low-level programming, building small stuffs or projects, and solving coding problems and also love
 going through the implementation of file systems, compilers, etc.
 
 ## Skills and Proficiency
 - **Languages**: C, C++, Javascript, Rust
-- **Tools & Technologies**: Linux, i3, Alacritty, Neovim (Lua configuration)
+- **Tools & Technologies**: Linux, i3 win man, Alacritty, Neovim (Lua configuration)
 - **Technical Knowledge**: 
   - Operating Systems & Database.
   - Data Structures and Algorithms (DSA)
@@ -23,6 +23,7 @@ A server solution aimed at solving the C10K problem by scaling from 1000 clients
 *Link* : [webflow](https://github.com/ankushT369/WebFlow)
 
 ## Current Focus
+Strengthening my data structures and algorithms
 
 ## Find Me Online
 - **Linkedin**: [AnkushMondal](https://www.linkedin.com/in/ankush-mondal-51814b256/)
