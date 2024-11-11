@@ -1,12 +1,13 @@
 # Ankush Mondal
+
 ## Introduction
 Hello! I am Ankush Mondal, I have a strong foundation in C, C++, Rust, and Zig programming. I enjoy low-level programming, building small stuffs or projects, and solving coding problems and also love
 going through the implementation of file systems, compilers, etc.
 
 ## Skills and Proficiency
 - **Languages**: C, C++, Javascript, Rust
-- **Tools & Technologies**: Linux, i3, rofi, polybar, Alacritty, Neovim (Lua configuration)
-- **Technical Expertise**: 
+- **Tools & Technologies**: Linux, i3, Alacritty, Neovim (Lua configuration)
+- **Technical Knowledge**: 
   - Operating Systems & Database.
   - Data Structures and Algorithms (DSA)
   - Manual Memory Management and Optimization Techniques
