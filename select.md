@@ -17,8 +17,8 @@ Here’s where **select()** comes in. It allows the server to monitor multiple f
 int select(int nfds, fd_set *readfds, fd_set *writefds,
             fd_set *exceptfds, struct timeval *timeout);
 ```
-`nfds (int nfds):` This argument specifies the highest-numbered file descriptor that you want to monitor, plus 1.
-`readfds (fd_set *readfds):` This is a set of file descriptors that you want to check if they are ready for reading.
-`writefds (fd_set *writefds):` This is a set of file descriptors you want to check if they are ready for writing.
-`exceptfds (fd_set *exceptfds):` This is a set of file descriptors you want to check for exceptional conditions.
-`timeout (struct timeval *timeout):` This is a timeout value that specifies how long select() should wait before returning. It is a time limit for how long select() should block and wait for an event to occur.
+- `nfds (int nfds):` This argument specifies the highest-numbered file descriptor that you want to monitor, plus 1.
+- `readfds (fd_set *readfds):` This is a set of file descriptors that you want to check if they are ready for reading.
+- `writefds (fd_set *writefds):` This is a set of file descriptors you want to check if they are ready for writing.
+- `exceptfds (fd_set *exceptfds):` This is a set of file descriptors you want to check for exceptional conditions.
+- `timeout (struct timeval *timeout):` This is a timeout value that specifies how long select() should wait before returning. It is a time limit for how long select() should block and wait for an event to occur.

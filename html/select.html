@@ -10,4 +10,10 @@
 
 int select(int nfds, fd_set *readfds, fd_set *writefds,
             fd_set *exceptfds, struct timeval *timeout);</code></pre>
-<p><code>nfds (int nfds):</code> This argument specifies the highest-numbered file descriptor that you want to monitor, plus 1. <code>readfds (fd_set *readfds):</code> This is a set of file descriptors that you want to check if they are ready for reading. <code>writefds (fd_set *writefds):</code> This is a set of file descriptors you want to check if they are ready for writing. <code>exceptfds (fd_set *exceptfds):</code> This is a set of file descriptors you want to check for exceptional conditions. <code>timeout (struct timeval *timeout):</code> This is a timeout value that specifies how long select() should wait before returning. It is a time limit for how long select() should block and wait for an event to occur.</p>
+<ul>
+<li><code>nfds (int nfds):</code> This argument specifies the highest-numbered file descriptor that you want to monitor, plus 1.</li>
+<li><code>readfds (fd_set *readfds):</code> This is a set of file descriptors that you want to check if they are ready for reading.</li>
+<li><code>writefds (fd_set *writefds):</code> This is a set of file descriptors you want to check if they are ready for writing.</li>
+<li><code>exceptfds (fd_set *exceptfds):</code> This is a set of file descriptors you want to check for exceptional conditions.</li>
+<li><code>timeout (struct timeval *timeout):</code> This is a timeout value that specifies how long select() should wait before returning. It is a time limit for how long select() should block and wait for an event to occur.</li>
+</ul>
