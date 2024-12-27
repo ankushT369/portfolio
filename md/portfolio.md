@@ -1,7 +1,7 @@
 # My Portfolio
 
 ## About Me
-Hello! I am a passionate student currently pursuing my 3rd-year undergraduate degree. I enjoy exploring systems programming and programming languages languages like Rust, C, and C++. My interests include linear algebra, Operating system and Database internals, algorithms, and web backend.
+Hello! Myself Ankush Mondal a passionate student currently pursuing my 3rd-year undergraduate degree. I enjoy exploring systems programming and programming languages languages like Rust, C, and C++. My interests include linear algebra, Operating system and Database internals, algorithms, and web backend.
 
 ## Skills
 - **Programming Languages**: Rust, C, C++
@@ -15,4 +15,4 @@ Hello! I am a passionate student currently pursuing my 3rd-year undergraduate de
 ## Contact
 - **Email**: [ankushmondal1y2t@gmail.com]
 - **GitHub**: [ankushT369](https://github.com/ankushT369)
-- **LinkedIn**: [https://linkedin.com/in/yourprofile](https://linkedin.com/in/yourprofile) (optional)
+- **LinkedIn**: [ankushLinkedin](https://linkedin.com/in/ankush-mondal-51814b256)
