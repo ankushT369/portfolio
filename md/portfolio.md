@@ -18,4 +18,3 @@ Hello! Myself Ankush Mondal a passionate student currently pursuing my 3rd-year 
 - **LinkedIn**: [ankushLinkedin](https://linkedin.com/in/ankush-mondal-51814b256)
 
 ## More blogs
-- **about select() syscall**: [select()](https://ankusht369.github.io/blogs/select.html)
