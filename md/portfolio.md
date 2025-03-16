@@ -1,12 +1,12 @@
 # My Portfolio
 
 ## About Me
-Hello! Myself Ankush Mondal a passionate student currently pursuing my 3rd-year undergraduate degree. I enjoy exploring systems programming and programming languages like Rust, C, and C++. My interests include linear algebra, Operating system and Database internals, algorithms, and web backend.
+Hello! Myself Ankush Mondal a passionate student currently pursuing my 3rd-year undergraduate degree. I enjoy exploring systems programming and programming languages like Rust, C, and C++. My interests include Operating system and Database internals, algorithms, linear algebra, calculus.
+
+Currently I have been contributing in [CRIU](https://github.com/checkpoint-restore/criu)
 
 ## Skills
-- **Programming Languages**: Rust, C, C++
-- **Specializations**: Systems programming, Backend development.
-- **Tools**: Git, CLI tools, Linux and code debugging utilities.
+- **Programming Languages**: C, C++, Rust
 
 ## Education
 - **Degree**: Undergraduate student, 3rd year
