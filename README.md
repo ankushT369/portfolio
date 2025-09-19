@@ -1,3 +1,3 @@
-This page contains blogs.
+This page contains portfolio.
 
-- [portfolio](https://ankusht369.github.io/blogs/portfolio.html)
+- [portfolio](https://ankusht369.github.io/portfolio/portfolio.html)
