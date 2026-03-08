@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SCCache</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <h1 class="title">SCCache (Shared Compilation Cache)</h1>
+  <div class="updated">updated: 3 Mar 2026</div>
+
+  <div class="content">
+
+    <h2>Shared Compilation Cache</h2>
+
+    <p>
+    Lets talks about <strong> Shared Compilation Cache</strong> and how CI systems use it to make builds fast across different machines. Its pretty simple.
+    </p>
+
+    <p>
+    When you compile a project you get intermediate files like <strong>*.o</strong> files. For example you have <strong>foo.rs</strong> and <strong>bar.rs</strong>. When the compiler runs it produces compiled outputs like <strong>foo.o</strong> and <strong>bar.o</strong>.
+    </p>
+
+    <p>
+    Now imagine building the <strong>same project on another machine</strong>. Normally that machine will repeat the exact same compilation steps again and produce the same <strong>foo.rs</strong> and <strong>bar.rs</strong>.
+    </p>
+
+    <p> Now lets do something interesting. </p>
+
+    <p>
+    What if instead of compiling everything again we <strong>store those compiled files somewhere shared</strong>, like <strong>S3, Redis, or another remote storage ?</strong>
+    </p>
+
+    <p>So after the first machine compiles:</p>
+
+    <pre><code class="language-bash">
+    foo.rs -> foo.o
+    bar.rs -> bar.o
+    </code></pre>
+
+    <p>those compiled files get uploaded to the shared cache.</p>
+
+    <p> 
+    Now when another machine builds the same project, before compiling it checks the cache first. If the exact compilation already exists, it can simply <strong>download foo.o and bar.o from the cache instead of compiling them again.</strong>
+    </p>
+
+    <p>
+    This works because if the <strong>source code, compiler version, and build flags are the same</strong>, the compiled output will also be the same.
+    </p>
+
+    <p>
+    This technique helps a lot when <strong> multiple machines build the same large project</strong>, because most files usually don’t change between builds. Instead of compiling thousands of files again, the build system can reuse the cached compiled objects and only compile the files that actually changed.
+    </p>
+
+    <p> That’s the basic idea behind <strong> shared compilation caches used by many CI systems.</strong> </p>
+
+  <div style="margin-top: 40px;">
+    <a href="blogs.html">← Back to Blogs</a>
+  </div>
+
