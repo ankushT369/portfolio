@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Write Amplification: B-Tree vs LSM Tree</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <h1 class="title">Write Amplification: B-Tree vs LSM Tree</h1>
+  <div class="updated">updated: 22 May 2026</div>
+
+  <div class="content">
+
+    <h2>write-amplification-btree-vs-lsm</h2>
+
+    <p>
+      You write <strong>4 KiB</strong> to your database.
+      Your SSD reports writing <strong>20 KiB</strong>.
+    </p>
+
+    <p>
+      Where did the extra <strong>16 KiB</strong> come from?
+    </p>
+
+    <p>
+      That is called <strong>write amplification</strong>, and it silently affects
+      performance, SSD lifespan, and database efficiency.
+    </p>
+
+    <p>
+      One major factor behind this is the type of storage engine your database uses:
+      <strong>B-Tree</strong> or <strong>LSM Tree</strong>.
+    </p>
+
+    <h3>What is Write Amplification?</h3>
+
+    <p>
+      Write amplification is the ratio between:
+    </p>
+
+    <ul>
+      <li>Data actually written to the SSD</li>
+      <li>Data originally written by the application/database</li>
+    </ul>
+
+    <p>
+      Example:
+    </p>
+<!-- <pre><code> -->
+Application writes: 10 MB and SSD actually writes: 30 MB
+Write Amplification Factor = 3
+    <!-- </code></pre> -->
+
+    <p>
+      Formula:
+    </p>
+
+    <pre><code>
+                             Data Written to SSD
+Write Amplification Factor = -------------------
+                             Data Written by User
+    </code></pre>
+
+    <p>
+      Lower write amplification is generally better because it means:
+    </p>
+
+    <ul>
+      <li>Better SSD lifespan</li>
+      <li>Less disk bandwidth usage</li>
+      <li>Better write throughput</li>
+    </ul>
+
+    <h3>Why SSDs Write More Than You Asked</h3>
+
+    <p>
+      The SSD is not magically creating extra user data.
+      The extra writes come from the internal work required to safely update flash memory.
+    </p>
+
+    <p>
+      SSDs usually cannot overwrite tiny amounts of data directly.
+      Even if your application changes only a few bytes, the SSD often needs to:
+    </p>
+
+    <ol>
+      <li>Read an entire flash page/block</li>
+      <li>Modify the changed bytes in memory</li>
+      <li>Write the updated page to a new location</li>
+      <li>Mark the old page as invalid</li>
+    </ol>
+
+    <p>
+      Later, the SSD garbage collector cleans up those invalid pages.
+    </p>
+
+    <p>
+      So even a tiny write can become much larger internally.
+    </p>
+
+    <h3>Simple Example</h3>
+
+    <pre><code>
+Application writes:
++----------+
+| 10 bytes |
++----------+
+
+SSD internally:
++--------------------+
+| Read 4KiB page     |
++--------------------+
+           ↓
++--------------------+
+| Modify 10 bytes    |
++--------------------+
+           ↓
++--------------------+
+| Write NEW 4KiB     |
++--------------------+
+           ↓
+Old page marked invalid
+    </code></pre>
+
+    <p>
+      This is one of the major sources of write amplification in storage systems.
+    </p>
+
+    <h3>Two Layers of Write Amplification</h3>
+
+    <p>
+      There are actually two layers of write amplification:
+    </p>
+
+    <ol>
+      <li><strong>SSD-level amplification</strong></li>
+      <li><strong>Database-level amplification</strong></li>
+    </ol>
+
+    <p>
+      Sometimes both combine together and become much worse.
+    </p>
+
+    <h3>How B-Trees Can Increase Write Amplification</h3>
+
+    <p>
+      Many traditional databases use <strong>B-Trees</strong>.
+    </p>
+
+    <p>
+      In a simplified view, B-Trees organize data into pages/nodes.
+      When a record changes, the corresponding page must also change.
+    </p>
+
+    <p>
+      Suppose a leaf node gets updated.
+      The SSD cannot directly overwrite only that tiny modified part,
+      so the entire page may need to be rewritten internally.
+    </p>
+
+    <p>
+      Sometimes the update also propagates upward:
+    </p>
+
+    <ul>
+      <li>Leaf node changes</li>
+      <li>Parent node updates</li>
+      <li>Possibly grandparent/root updates</li>
+    </ul>
+
+    <pre><code>
+          [ROOT]
+             |
+     +-------+-------+
+     |               |
+  [NODE]          [NODE]
+     |
+  [LEAF PAGE]
+      ↑
+small update here
+
+Possible rewrites:
+- leaf page
+- parent node
+- root node
+    </code></pre>
+
+    <p>
+      This means a very small logical database write can turn into many physical SSD writes.
+    </p>
+
+    <p>
+      Since B-Trees often update pages in-place,
+      they can generate a lot of random write activity.
+    </p>
+
+    <h3>Why LSM Trees Exist</h3>
+
+    <p>
+      This is one reason many modern databases use <strong>LSM Trees (Log-Structured Merge Trees)</strong>.
+    </p>
+
+    <p>
+      Instead of constantly modifying pages in-place,
+      LSM Trees mostly write data sequentially by appending new records.
+    </p>
+
+    <pre><code>
+B-Tree:
+update page → rewrite page → random writes
+
+LSM Tree:
+append new data → sequential writes
+    </code></pre>
+
+    <p>
+      Sequential writes are usually much friendlier to SSDs and reduce random rewrite pressure.
+    </p>
+
+    <p>
+      This is why LSM-based systems are often very good for:
+    </p>
+
+    <ul>
+      <li>Heavy write workloads</li>
+      <li>High ingestion systems</li>
+      <li>Logging and analytics</li>
+      <li>Large-scale distributed databases</li>
+    </ul>
+
+    <h3>The Tradeoff</h3>
+
+    <p>
+      Nothing comes for free.
+    </p>
+
+    <p>
+      While LSM Trees improve write performance,
+      they usually sacrifice some read efficiency.
+    </p>
+
+    <p>
+      Reads may become slower because data can exist across:
+    </p>
+
+    <ul>
+      <li>Memory tables</li>
+      <li>Multiple SSTables</li>
+      <li>Different compaction levels</li>
+    </ul>
+
+    <p>
+      B-Trees, on the other hand, are often excellent for reads because the structure is optimized for direct lookups.
+    </p>
+
+    <pre><code>
+B-Tree:
+✔ Better read throughput
+✘ More random writes
+
+LSM Tree:
+✔ Better write throughput
+✘ More complex/slower reads
+    </code></pre>
+
+    <h3>Conclusion</h3>
+
+    <p>
+      Write amplification is not just an SSD problem.
+      Database design can make it significantly better or significantly worse.
+    </p>
+
+    <p>
+      B-Trees and LSM Trees represent two very different approaches to handling storage:
+    </p>
+
+    <ul>
+      <li>B-Trees optimize reads</li>
+      <li>LSM Trees optimize writes</li>
+    </ul>
+
+    <p>
+      Sometimes the real bottleneck is not your database algorithm —
+      it is the physics of flash storage underneath it.
+    </p>
+
+  </div>
+
+  <div style="margin-top: 40px;">
+    <a href="blogs.html">← Back to Blogs</a>
+  </div>
+
+</body>
+</html>
