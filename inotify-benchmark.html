@@ -143,7 +143,7 @@
     </p>
 
     <p>
-      Overall, these results indicate that using a sufficiently large event buffer is important for achieving good performance, but allocating excessively large buffers offers little additional benefit.
+    Overall, these results indicate that a sufficiently large buffer is important for good performance, but <strong>the optimal buffer size is approximately the size of your CPU's L3 cache</strong>—in this case, <strong>8 MiB</strong>. Allocating excessively large buffers offers little additional benefit.
     </p>
 
   </div>
